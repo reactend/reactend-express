@@ -3,6 +3,8 @@
 **React renderer to build Node.js server**
 <br />
 
+![Planet Express](https://seeklogo.com/images/P/Planet_Express-logo-584A6A9A38-seeklogo.com.png)
+
 ### Why?
 
 It's the only crazy idea to use React to structure Backend on Node.js.
@@ -15,17 +17,12 @@ It works with express.js framework to run Node.js server. Custom renderer we hav
 
 ### Code Example
 
-```jsx
+```js
 import React from "react";
 import ReactExpress from "./renderer";
 
 const HomePage = () => <h1>Welcome to home page</h1>;
-const AboutPage = () => (
-  <>
-    <h1>About Company</h1>
-    <p>Bla bla</p>
-  </>
-);
+const AboutPage = () => <><h1>About Company</h1><p>Bla bla</p></>;
 
 const ExpressApp = () => (
   <app port={8080}>
