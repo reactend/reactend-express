@@ -4,7 +4,7 @@ import { ComponentsPage } from "./pages/ComponentsPage";
 import ReactExpress from "./renderer";
 
 const ExpressApp = () => (
-  <app port={8080}>
+  <app port={process.env.PORT || 8080}>
     <static publicPath="/public" />
     <router path="/">
       <get content={HomePage} />
