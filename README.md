@@ -1,10 +1,9 @@
 # ReactXpress
 
-**React renderer to build Node.js server** <br/>
-DEMO - [click here](https://react-xpress-demo.herokuapp.com)
+**React renderer to build Node.js server**
 <br />
 
-![Planet Express](https://seeklogo.com/images/P/Planet_Express-logo-584A6A9A38-seeklogo.com.png)
+![Planet Express](public/logo.svg)
 
 ### Why?
 
@@ -23,7 +22,7 @@ import React from "react";
 import ReactExpress from "./renderer";
 
 const HomePage = () => <h1>Welcome to home page</h1>;
-const AboutPage = () => <><h1>About Company</h1><p>Bla bla</p></>;
+const AboutPage = () => <h1>About Company</h1>;
 
 const ExpressApp = () => (
   <app port={8080}>
@@ -69,3 +68,6 @@ I work on it and I'm trying to improve it, even it's not a good idea to use this
 ### Contact me
 
 Email me if you have any idea and you would like to be contributor [orkhanjafarovr@gmail.com](mailto:orkhanjafarovr@gmail.com)
+
+Resources: <br/>
+https://dev.to/orkhanjafarovr/express-in-react-react-backend-whut-4lkg
