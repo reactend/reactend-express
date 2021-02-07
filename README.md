@@ -1,6 +1,7 @@
 # ReactXpress
 
-**React renderer to build Node.js server**
+**React renderer to build Node.js server** <br/>
+DEMO - [click here](https://react-xpress-demo.herokuapp.com)
 <br />
 
 ![Planet Express](https://seeklogo.com/images/P/Planet_Express-logo-584A6A9A38-seeklogo.com.png)
