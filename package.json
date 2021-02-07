@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-    "start": "babel-node ./src/app.js",
+    "start": "./node_modules/.bin/babel-node ./src/app.js",
     "dev": "nodemon --exec babel-node ./src/app.js",
     "example1": "nodemon --exec babel-node --config-file ./.babelrc ./examples/basic",
     "example2": "nodemon --exec babel-node --config-file ./.babelrc ./examples/advanced"
