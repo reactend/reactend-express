@@ -1,0 +1,30 @@
+{
+  "name": "react-express-renderer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "babel-node ./src/app.js",
+    "dev": "nodemon --exec babel-node ./src/app.js",
+    "example1": "nodemon --exec babel-node --config-file ./.babelrc ./examples/basic",
+    "example2": "nodemon --exec babel-node --config-file ./.babelrc ./examples/advanced"
+  },
+  "keywords": [],
+  "author": "Orkhan Jafarov",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-helmet": "^6.1.0",
+    "react-reconciler": "^0.26.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/plugin-transform-react-jsx": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "nodemon": "^2.0.7"
+  }
+}
