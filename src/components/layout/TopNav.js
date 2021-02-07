@@ -2,14 +2,14 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { context } from "../../context";
 
-export const TopNav = ({ currentPath }) => {
+export const TopNav = () => {
   const { req } = useContext(context);
   return (
     <TopWrapper currentPath={req.originalUrl}>
       <Logo href="/"> </Logo>
       <NavItem href="/">Home</NavItem>
       <NavItem href="/components">Components</NavItem>
-      <NavItem href="/github">Github</NavItem>
+      <NavItem href="https://github.com/gigantz/react-xpress">Github</NavItem>
     </TopWrapper>
   );
 };
