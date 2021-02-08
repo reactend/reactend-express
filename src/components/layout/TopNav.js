@@ -1,23 +1,20 @@
-import React, { useContext, useMemo } from "react";
-import styled from "styled-components";
-import { ReqResContext } from "../../../lib";
+import React, { useContext, useMemo } from 'react';
+import styled from 'styled-components';
+import { ReqResContext } from '../../../lib';
 
 const PAGES = [
-  { path: "/", label: "Home", title: "@orkhanjafarovr" },
-  { path: "/components", label: "Components", title: "Components Page" },
+  { path: '/', label: 'Home', title: '@orkhanjafarovr' },
+  { path: '/components', label: 'Components', title: 'Components Page' },
   {
-    path: "https://github.com/gigantz/react-xpress",
-    label: "Github",
-    title: "Github",
+    path: 'https://github.com/gigantz/react-xpress',
+    label: 'Github',
+    title: 'Github',
   },
 ];
 
 export const TopNav = () => {
   const { req } = useContext(ReqResContext);
-  const pageTitle = useMemo(
-    () => PAGES.find((p) => p.path === req.originalUrl).title,
-    [req]
-  );
+  const pageTitle = useMemo(() => PAGES.find((p) => p.path === req.originalUrl).title, [req]);
 
   return (
     <TopWrapper currentPath={req.originalUrl}>
@@ -39,7 +36,7 @@ const TopWrapper = styled.nav`
   background-color: ${(props) => props.theme.colors.brandVeryDark};
 
   &:before {
-    content: "";
+    content: '';
     height: 100%;
     width: 100vw;
     background-color: ${(props) => props.theme.colors.brandVeryDark};
@@ -49,7 +46,7 @@ const TopWrapper = styled.nav`
     margin-left: -50vw;
   }
 
-  a[href="${(props) => props.currentPath}"] {
+  a[href='${(props) => props.currentPath}'] {
     color: ${(props) => props.theme.colors.brandVeryLight};
 
     &:before {
@@ -92,10 +89,10 @@ const NavItem = styled.a`
   }
 
   &:before {
-    content: "";
+    content: '';
     height: 3px;
     width: 100%;
-    background-color: "transparent";
+    background-color: 'transparent';
     position: absolute;
     bottom: 0;
     left: 0;

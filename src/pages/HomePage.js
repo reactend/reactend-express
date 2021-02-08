@@ -1,27 +1,25 @@
-import React from "react";
-import { Helmet } from "react-helmet";
-import styled from "styled-components";
-import { BaseLayout } from "../components/layout/BaseLayout";
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
+import { BaseLayout } from '../components/layout/BaseLayout';
 
-export const HomePage = () => {
-  return (
-    <BaseLayout>
-      <Helmet>
-        <title>ReactXpress | React renderer to build Node.js server</title>
-      </Helmet>
-      <Hero>
-        <div>
-          <img src="/logo.svg" />
-          <h1>
-            React<span>Xpress</span>
-          </h1>
-          <h2>React renderer to build Node.js server</h2>
-        </div>
-        <CodeExample src="/code-example.png" />
-      </Hero>
-    </BaseLayout>
-  );
-};
+export const HomePage = () => (
+  <BaseLayout>
+    <Helmet>
+      <title>ReactXpress | React renderer to build Node.js server</title>
+    </Helmet>
+    <Hero>
+      <div>
+        <img src="/logo.svg" />
+        <h1>
+          React<span>Xpress</span>
+        </h1>
+        <h2>React renderer to build Node.js server</h2>
+      </div>
+      <CodeExample src="/code-example.png" />
+    </Hero>
+  </BaseLayout>
+);
 
 const Hero = styled.div`
   height: 570px;
@@ -60,7 +58,7 @@ const Hero = styled.div`
   }
 
   &:before {
-    content: "";
+    content: '';
     height: 100%;
     width: 100vw;
     background-color: ${(props) => props.theme.colors.brandVeryDark};

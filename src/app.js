@@ -1,8 +1,9 @@
-import React from "react";
-import { ReactXpress, App, Static, Router, Get, Post, Res } from "../lib";
-import { HomePage } from "./pages/HomePage";
-import { ComponentsPage } from "./pages/ComponentsPage";
-import { resolve } from "path";
+import React from 'react';
+import { resolve } from 'path';
+import { ReactXpress, App, Static, Router, Get, Post, Res } from '../lib';
+
+import { HomePage } from './pages/HomePage';
+import { ComponentsPage } from './pages/ComponentsPage';
 
 const ExpressApp = () => (
   <App port={process.env.PORT || 8080}>
@@ -13,8 +14,8 @@ const ExpressApp = () => (
       <Router path="/api">
         <Post
           path="/status"
-          json={{ msg: "It is okay, bro" }}
-          handler={(req, res) => console.log(req.originalUrl)}
+          json={{ msg: 'It is okay, bro' }}
+          handler={(req) => console.log(req.originalUrl)}
         />
       </Router>
       <Updates />
@@ -30,13 +31,10 @@ const Updates = () => (
     </Get>
     <Post path="/json">
       <Res.Status statusCode={401} />
-      <Res.Content json={{ msg: "No Access" }} contentType="application/json" />
+      <Res.Content json={{ msg: 'No Access' }} contentType="application/json" />
     </Post>
     <Get path="/send-file">
-      <Res.SendFile
-        path={resolve("public/code-example.png")}
-        onError={console.log}
-      />
+      <Res.SendFile path={resolve('public/code-example.png')} onError={console.log} />
     </Get>
     <Get path="/render">
       <Res.Render component={() => <h1>Shut Up And Take My Money!</h1>} />

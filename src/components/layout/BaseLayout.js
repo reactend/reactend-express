@@ -1,8 +1,8 @@
-import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import { TopNav } from "./TopNav";
-import { GlobalStyle } from "./GlobalStyle";
-import { theme } from "../../theme";
+import React from 'react';
+import styled, { ThemeProvider } from 'styled-components';
+import { TopNav } from './TopNav';
+import { GlobalStyle } from './GlobalStyle';
+import { theme } from '../../theme';
 
 export const BaseLayout = ({ children }) => (
   <ThemeProvider theme={theme}>
