@@ -13,17 +13,17 @@ export const ComponentsPage = () => {
         <h1>Components</h1>
         <p>
           <p>
-            <span>{`<app />`}</span> - App Instance (props: port)
+            <span>{`<App />`}</span> - App Instance (props: port)
           </p>
           <p>
-            <span>{`<static />`}</span> - Static route (props: publicPath, path,
+            <span>{`<Static />`}</span> - Static route (props: publicPath, path,
             options)
           </p>
           <p>
-            <span>{`<router />`}</span> - Router-Provider (props: path)
+            <span>{`<Router />`}</span> - Router-Provider (props: path)
           </p>
           <p>
-            <span>{`<get />, <post /> and ...`}</span> - Route component (props:
+            <span>{`<Get />, <Post /> and ...`}</span> - Route component (props:
             path, content, handler, status)
           </p>
         </p>

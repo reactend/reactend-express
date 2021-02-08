@@ -40,7 +40,7 @@ const ExpressApp = () => (
   </App>
 );
 
-ReactExpress.render(<ExpressApp />);
+ReactXpress.render(<ExpressApp />);
 ```
 
 ### How to use
