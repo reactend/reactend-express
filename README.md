@@ -19,28 +19,52 @@ It works with express.js framework to run Node.js server. Custom renderer we hav
 
 ```js
 import React from 'react';
-import { ReactXpress, App, Static, Router, Get, Post } from '../lib';
+import { resolve } from 'path';
+import { ReactXpress, App, Static, Router, Get, Post, Res } from '../lib';
 
-const HomePage = () => <h1>Welcome to home page</h1>;
-const AboutPage = () => <h1>About Company</h1>;
+const HomePage = () => <h1>Home page</h1>;
+const AboutPage = () => <h1>About Page</h1>;
 
 const ExpressApp = () => (
-  <App port={8080}>
+  <App port={process.env.PORT || 8080}>
     <Static publicPath="/public" />
     <Router path="/">
-      <Get content={<HomePage />} />
-      <Get path="*" content="Not Found" status={404} />
-    </Router>
-    <Router path="/company">
-      <Get path="/about" content={<AboutPage />} />
-    </Router>
-    <Router path="/api">
-      <Post path="/status" content={{ msg: 'It is okay, bro' }} />
+      <Get render={HomePage} />
+      <Get path="/about" render={AboutPage} />
+      <Router path="/api">
+        <Post
+          path="/status"
+          json={{ msg: 'It is okay, bro' }}
+          handler={(req) => console.log(req.originalUrl)}
+        />
+      </Router>
+      <Updates />
+      <Get path="*" text="Not Found" status={404} />
     </Router>
   </App>
 );
 
+// Updates! 🤩
+const Updates = () => (
+  <>
+    <Get path="/redirect">
+      <Res.Redirect statusCode={301} path="https://ru.reactjs.org" />
+    </Get>
+    <Post path="/json">
+      <Res.Status statusCode={401} />
+      <Res.Content json={{ msg: 'No Access' }} contentType="application/json" />
+    </Post>
+    <Get path="/send-file">
+      <Res.SendFile path={resolve('public/code-example.png')} onError={console.log} />
+    </Get>
+    <Get path="/render">
+      <Res.Render component={() => <h1>Shut Up And Take My Money!</h1>} />
+    </Get>
+  </>
+);
+
 ReactXpress.render(<ExpressApp />);
+
 ```
 
 ### How to use
