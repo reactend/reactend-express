@@ -10,40 +10,35 @@ export const ComponentsPage = () => (
     </Helmet>
     <Wrapper>
       <p>
-        <p>
-          <span>{`<App />`}</span> - App Instance (props: port)
-        </p>
-        <p>
-          <span>{`<Static />`}</span> - Static route (props: publicPath, path, options)
-        </p>
-        <p>
-          <span>{`<Router />`}</span> - Router-Provider (props: path)
-        </p>
-        <p>
-          <span>{`<Get />, <Post /> and ...`}</span> - Route component (props: path, content,
-          handler, status)
-        </p>
-        <p>
-          <span>{`<Res />`}</span> - Response components
-        </p>
-        <p>
-          <span>{`<Res />`}</span> - Response components
-        </p>
-        <p>
-          <span>{'- <Res.Render />'}</span> - Render (props: component){' '}
-        </p>
-        <p>
-          <span>{'- <Res.Content />'}</span> - Render (props: json, text, contentType){' '}
-        </p>
-        <p>
-          <span>{'- <Res.Status />'}</span> - Render (props: statusCode){' '}
-        </p>
-        <p>
-          <span>{'- <Res.Redirect />'}</span> - Render (props: path, statusCode){' '}
-        </p>
-        <p>
-          <span>{'- <Res.SendFile />'}</span> - Render (props: path, options, onError){' '}
-        </p>
+        <span>{`<App />`}</span> - App Instance (props: port)
+      </p>
+      <p>
+        <span>{`<Static />`}</span> - Static route (props: publicPath, path, options)
+      </p>
+      <p>
+        <span>{`<Router />`}</span> - Router-Provider (props: path)
+      </p>
+      <p>
+        <span>{`<Get />, <Post /> and ...`}</span> - Route component (props: path, content, handler,
+        status)
+      </p>
+      <p>
+        <span>{`<Res />`}</span> - Response components
+      </p>
+      <p>
+        <span>{`<Res.Render />`}</span> - Render (props: component)
+      </p>
+      <p>
+        <span>{`<Res.Content />`}</span> - Response send (props: json, text, contentType)
+      </p>
+      <p>
+        <span>{`<Res.Status />`}</span> - Response Status (props: statusCode)
+      </p>
+      <p>
+        <span>{`<Res.SendFile />`}</span> - Response Send File (props: path, options, onError)
+      </p>
+      <p>
+        <span>{`<Res.Redirect />`}</span> - Redirect (props: path, statusCode)
       </p>
       <br />
       <code>Sorry for this, better page is in process...</code>

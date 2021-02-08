@@ -64,7 +64,6 @@ const Updates = () => (
 );
 
 ReactXpress.render(<ExpressApp />);
-
 ```
 
 ### How to use
@@ -76,13 +75,16 @@ ReactXpress.render(<ExpressApp />);
 
 ### Components
 
-`<app />` - App Instance (props: port)
-<br/>
-`<static />` - Static route (props: publicPath, path, options)
-<br/>
-`<router />` - Router-Provider (props: path)
-<br/>
-`<get />, <post /> and ...` - Route component (props: path, content, handler, status)
+`<App />` - App Instance (props: port)
+`<Static />` - Static route (props: publicPath, path, options)
+`<Router />` - Router-Provider (props: path)
+`<Get />, <Post /> and ...` - Route component (props: path, content, handler, status)
+`<Res />` - Response components
+`<Res.Render />` - Render (props: component)
+`<Res.Content />` - Response send (props: json, text, contentType)
+`<Res.Status />` - Response Status (props: statusCode)
+`<Res.SendFile />` - Response Send File (props: path, options, onError)
+`<Res.Redirect />` - Redirect (props: path, statusCode)
 <br />
 <br />
 
