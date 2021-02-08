@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { context } from "../../context";
+import { ReqResContext } from "../../../lib";
 
 export const TopNav = () => {
-  const { req } = useContext(context);
+  const { req } = useContext(ReqResContext);
   return (
     <TopWrapper currentPath={req.originalUrl}>
       <Logo href="/"> </Logo>
