@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactXpress, App, Static, Router, Get } from "../lib";
+import { ReactXpress, App, Static, Router, Get } from "../../lib";
 
 const ExpressApp = () => (
   <App port={8080}>
