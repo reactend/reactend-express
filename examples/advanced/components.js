@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 export const PostItem = ({ userId, id, title, body }) => (
-  <div style={{ width: 500, margin: "0 auto" }}>
+  <div style={{ width: 500, margin: '0 auto' }}>
     <p>
       UserID: {userId} / PostID: {id}
     </p>

@@ -18,8 +18,8 @@ It works with express.js framework to run Node.js server. Custom renderer we hav
 ### Code Example
 
 ```js
-import React from "react";
-import { ReactXpress, App, Static, Router, Get, Post } from "../lib";
+import React from 'react';
+import { ReactXpress, App, Static, Router, Get, Post } from '../lib';
 
 const HomePage = () => <h1>Welcome to home page</h1>;
 const AboutPage = () => <h1>About Company</h1>;
@@ -35,7 +35,7 @@ const ExpressApp = () => (
       <Get path="/about" content={<AboutPage />} />
     </Router>
     <Router path="/api">
-      <Post path="/status" content={{ msg: "It is okay, bro" }} />
+      <Post path="/status" content={{ msg: 'It is okay, bro' }} />
     </Router>
   </App>
 );

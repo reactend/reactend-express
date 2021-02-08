@@ -1,15 +1,29 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import { ReqResContext } from "../../../lib";
+import React, { useContext, useMemo } from 'react';
+import styled from 'styled-components';
+import { ReqResContext } from '../../../lib';
+
+const PAGES = [
+  { path: '/', label: 'Home', title: '@orkhanjafarovr' },
+  { path: '/components', label: 'Components', title: 'Components Page' },
+  {
+    path: 'https://github.com/gigantz/react-xpress',
+    label: 'Github',
+    title: 'Github',
+  },
+];
 
 export const TopNav = () => {
   const { req } = useContext(ReqResContext);
+  const pageTitle = useMemo(() => PAGES.find((p) => p.path === req.originalUrl).title, [req]);
+
   return (
     <TopWrapper currentPath={req.originalUrl}>
-      <Logo href="/"> </Logo>
-      <NavItem href="/">Home</NavItem>
-      <NavItem href="/components">Components</NavItem>
-      <NavItem href="https://github.com/gigantz/react-xpress">Github</NavItem>
+      <Logo href="/">{pageTitle}</Logo>
+      {PAGES.map((page) => (
+        <NavItem key={page.path} href={page.path}>
+          {page.label}
+        </NavItem>
+      ))}
     </TopWrapper>
   );
 };
@@ -22,7 +36,7 @@ const TopWrapper = styled.nav`
   background-color: ${(props) => props.theme.colors.brandVeryDark};
 
   &:before {
-    content: "";
+    content: '';
     height: 100%;
     width: 100vw;
     background-color: ${(props) => props.theme.colors.brandVeryDark};
@@ -32,12 +46,16 @@ const TopWrapper = styled.nav`
     margin-left: -50vw;
   }
 
-  a[href="${(props) => props.currentPath}"] {
+  a[href='${(props) => props.currentPath}'] {
     color: ${(props) => props.theme.colors.brandVeryLight};
 
     &:before {
       background-color: ${(props) => props.theme.colors.brandVeryLight};
     }
+  }
+
+  @media (max-width: 600px) {
+    justify-content: center;
   }
 `;
 
@@ -51,10 +69,9 @@ const Logo = styled.a`
   text-decoration: none;
   margin-right: auto;
   padding: 0 10px;
-  opacity: 0.1;
 
-  &:hover {
-    opacity: 1;
+  @media (max-width: 600px) {
+    display: none;
   }
 `;
 
@@ -72,10 +89,10 @@ const NavItem = styled.a`
   }
 
   &:before {
-    content: "";
+    content: '';
     height: 3px;
     width: 100%;
-    background-color: "transparent";
+    background-color: 'transparent';
     position: absolute;
     bottom: 0;
     left: 0;
