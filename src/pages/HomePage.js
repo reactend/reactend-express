@@ -11,6 +11,7 @@ export const HomePage = () => {
       </Helmet>
       <Hero>
         <div>
+          <img src="/logo.svg" />
           <h1>
             React<span>Xpress</span>
           </h1>
@@ -23,7 +24,7 @@ export const HomePage = () => {
 };
 
 const Hero = styled.div`
-  height: 550px;
+  height: 570px;
   width: 100%;
   background-color: ${(props) => props.theme.colors.brandVeryDark};
   position: relative;
@@ -48,6 +49,16 @@ const Hero = styled.div`
     color: ${(props) => props.theme.colors.brandVeryLight};
   }
 
+  @media (max-width: 600px) {
+    flex-direction: column;
+    h1 {
+      font-size: 3em;
+    }
+    h2 {
+      font-size: 1em;
+    }
+  }
+
   &:before {
     content: "";
     height: 100%;
@@ -64,4 +75,8 @@ const Hero = styled.div`
 const CodeExample = styled.img`
   width: 700px;
   margin-top: 100px;
+
+  @media (max-width: 600px) {
+    margin-top: 40px;
+  }
 `;

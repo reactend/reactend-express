@@ -10,7 +10,6 @@ export const ComponentsPage = () => {
         <title>ReactXpress | Components</title>
       </Helmet>
       <Wrapper>
-        <h1>Components</h1>
         <p>
           <p>
             <span>{`<App />`}</span> - App Instance (props: port)
@@ -26,6 +25,30 @@ export const ComponentsPage = () => {
             <span>{`<Get />, <Post /> and ...`}</span> - Route component (props:
             path, content, handler, status)
           </p>
+          <p>
+            <span>{`<Res />`}</span> - Response components
+          </p>
+          <p>
+            <span>{`<Res />`}</span> - Response components
+          </p>
+          <p>
+            <span>{"- <Res.Render />"}</span> - Render (props: component){" "}
+          </p>
+          <p>
+            <span>{"- <Res.Content />"}</span> - Render (props: json, text,
+            contentType){" "}
+          </p>
+          <p>
+            <span>{"- <Res.Status />"}</span> - Render (props: statusCode){" "}
+          </p>
+          <p>
+            <span>{"- <Res.Redirect />"}</span> - Render (props: path,
+            statusCode){" "}
+          </p>
+          <p>
+            <span>{"- <Res.SendFile />"}</span> - Render (props: path, options,
+            onError){" "}
+          </p>
         </p>
         <br />
         <code>Sorry for this, better page is in process...</code>
@@ -35,6 +58,9 @@ export const ComponentsPage = () => {
 };
 
 const Wrapper = styled.div`
+  margin-top: 20px;
+  color: ${(props) => props.theme.colors.white};
+
   h1 {
     margin: 10px 0;
   }
