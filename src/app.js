@@ -1,22 +1,22 @@
 import React from "react";
 import { HomePage } from "./pages/HomePage";
 import { ComponentsPage } from "./pages/ComponentsPage";
-import ReactExpress from "./renderer";
+import { ReactXpress, App, Static, Router, Get, Post } from "../lib";
 
 const ExpressApp = () => (
-  <app port={process.env.PORT || 8080}>
-    <static publicPath="/public" />
-    <router path="/">
-      <get content={HomePage} />
-      <router path="/components">
-        <get content={ComponentsPage} />
-      </router>
-      <router path="/api">
-        <post path="/status" content={{ msg: "It is okay, bro" }} />
-      </router>
-      <get path="*" content="Not Found" status={404} />
-    </router>
-  </app>
+  <App port={process.env.PORT || 8080}>
+    <Static publicPath="/public" />
+    <Router path="/">
+      <Get content={HomePage} />
+      <Router path="/components">
+        <Get content={ComponentsPage} />
+      </Router>
+      <Router path="/api">
+        <Post path="/status" content={{ msg: "It is okay, bro" }} />
+      </Router>
+      <Get path="*" content="Not Found" status={404} />
+    </Router>
+  </App>
 );
 
-ReactExpress.render(<ExpressApp />);
+ReactXpress.render(<ExpressApp />);
