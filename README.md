@@ -19,24 +19,25 @@ It works with express.js framework to run Node.js server. Custom renderer we hav
 
 ```js
 import React from "react";
-import ReactExpress from "./renderer";
+import { ReactXpress, App, Static, Router, Get, Post } from "../lib";
 
 const HomePage = () => <h1>Welcome to home page</h1>;
 const AboutPage = () => <h1>About Company</h1>;
 
 const ExpressApp = () => (
-  <app port={8080}>
-    <router path="/">
-      <get content={<HomePage />} />
-      <get path="*" content="Not Found" status={404} />
-    </router>
-    <router path="/company">
-      <get path="/about" content={<AboutPage />} />
-    </router>
-    <router path="/api">
-      <post path="/status" content={{ msg: "It is okay, bro" }} />
-    </router>
-  </app>
+  <App port={8080}>
+    <Static publicPath="/public" />
+    <Router path="/">
+      <Get content={<HomePage />} />
+      <Get path="*" content="Not Found" status={404} />
+    </Router>
+    <Router path="/company">
+      <Get path="/about" content={<AboutPage />} />
+    </Router>
+    <Router path="/api">
+      <Post path="/status" content={{ msg: "It is okay, bro" }} />
+    </Router>
+  </App>
 );
 
 ReactExpress.render(<ExpressApp />);
