@@ -6,13 +6,13 @@ const ExpressApp = () => (
     <Static publicPath="/public" />
     <Router path="/">
       <Get
-        content={() => (
+        render={() => (
           <div>
             <h1>Hello World</h1>
           </div>
         )}
       />
-      <Get path="*" content="Not Found" status={404} />
+      <Get path="*" text="Not Found" status={404} />
     </Router>
   </App>
 );

@@ -8,7 +8,7 @@ const ExpressApp = () => (
     <Router path="/">
       <Get path="/posts" handler={postsHandler} />
       <Get path="/posts/:id" handler={postHandler} />
-      <Get path="*" content="Not Found" status={404} />
+      <Get path="*" text="Not Found" status={404} />
     </Router>
   </App>
 );
