@@ -12,7 +12,7 @@
     "build": "NODE_ENV=production rollup -c rollup.config.js",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": [ "reactend", "express", "react", "http-server"],
   "author": "Orkhan Jafarov",
   "license": "ISC",
   "husky": {
