@@ -1,6 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 import styled from 'styled-components';
-import { ReqResContext } from '../../../lib';
+import { ReqResContext } from '../../../src';
 
 const PAGES = [
   { path: '/', label: 'Home', title: '@orkhanjafarovr' },

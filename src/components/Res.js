@@ -1,6 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+/**
+ * @param {{ name: 'Accept-Patch' | 'Accept-Ranges' | 'Age' | 'Allow' | 'Alt-Svc' | 'Cache-Control' | 'Connection' | 'Content-Disposition' | 'Content-Encoding' | 'Content-Language' | 'Content-Length' | 'Content-Location' | 'Content-Range' | 'Content-Type' | 'Date' | 'Delta-Base' | 'ETag' | 'Expires' | 'IM' | 'Last-Modified' | 'Link' | 'Location' | 'Pragma' | 'Proxy-Authenticate' | 'Public-Key-Pins' | 'Retry-After' | 'Server' | 'Set-Cookie' | 'Strict-Transport-Security' | 'Trailer' | 'Transfer-Encoding' | 'Tk' | 'Upgrade' | 'Vary' | 'Via' | 'Warning' | 'WWW-Authenticate' | 'Content-Security-Policy' | 'Refresh' | 'X-Powered-By' | 'X-Request-ID' | 'X-UA-Compatible' | 'X-XSS-Protection' }} props
+ */
+const Header = ({ name, value }) => <param type="header" content={{ name, value }} />;
+
+Header.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.any,
+};
+
 const Render = ({ component }) => <param type="render" content={component} />;
 
 Render.propTypes = {
@@ -19,13 +29,12 @@ const Content = ({ json, contentType, text }) => {
 };
 
 Content.propTypes = {
-  json: PropTypes.any,
+  json: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   contentType: PropTypes.string,
   text: PropTypes.string,
 };
 
 const Status = ({ statusCode }) => <param type="status" content={statusCode} />;
-
 Status.propTypes = {
   statusCode: PropTypes.number,
 };
@@ -48,6 +57,7 @@ SendFile.propTypes = {
 };
 
 export const Res = {
+  Header,
   Render,
   Content,
   Status,

@@ -1,9 +1,13 @@
-# ReactXpress
+# React-end
 
-**React renderer to build Node.js server**
+React http-server based on Express.js
 <br />
 
 ![Planet Express](public/logo.svg)
+
+## Install
+
+`npm i --save @react-end/express`
 
 ### Why?
 
@@ -19,8 +23,7 @@ It works with express.js framework to run Node.js server. Custom renderer we hav
 
 ```js
 import React from 'react';
-import { resolve } from 'path';
-import { ReactXpress, App, Static, Router, Get, Post, Res } from '../lib';
+import { registerApp, App, Static, Router, Get, Post, Res } from '@react-end/express';
 
 const HomePage = () => <h1>Home page</h1>;
 const AboutPage = () => <h1>About Page</h1>;
@@ -44,7 +47,14 @@ const ExpressApp = () => (
   </App>
 );
 
-// Updates! 🤩
+registerApp(ExpressApp);
+```
+
+<br />
+
+## You can use this way too
+
+```js
 const Updates = () => (
   <>
     <Get path="/redirect">
@@ -62,16 +72,7 @@ const Updates = () => (
     </Get>
   </>
 );
-
-ReactXpress.render(<ExpressApp />);
 ```
-
-### How to use
-
-1. Clone the repo
-2. `npm install`
-3. Run dev mode - `npm run dev`
-4. Do all changes in `./src` folder as it's not library yet.
 
 ### Components
 
@@ -88,13 +89,6 @@ ReactXpress.render(<ExpressApp />);
 <br />
 <br />
 
-### What is planning?
-
-I work on it and I'm trying to improve it, even it's not a good idea to use this kinda renderer for real-world app. But It would be awesome to have contributors to make its DX much better.
-
 ### Contact me
 
 Email me if you have any idea and you would like to be contributor [orkhanjafarovr@gmail.com](mailto:orkhanjafarovr@gmail.com)
-
-Resources: <br/>
-https://dev.to/orkhanjafarovr/express-in-react-react-backend-whut-4lkg

@@ -1,15 +1,23 @@
 import React from 'react';
 import { resolve } from 'path';
-import { ReactXpress, App, Static, Router, Get, Post, Res } from '../lib';
+import cors from 'cors';
 
+import { registerApp, App, Static, Router, Get, Post, Res, Logger, Middleware } from '../src';
 import { HomePage } from './pages/HomePage';
 import { ComponentsPage } from './pages/ComponentsPage';
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const ExpressApp = () => (
   <App port={process.env.PORT || 8080}>
-    <Static publicPath="/public" />
+    <Static publicPath="/../../public" />
+    <Logger mode="dev" disabled={isProd} />
+    <Middleware handler={cors()} />
     <Router path="/">
-      <Get render={HomePage} />
+      <Get>
+        <Res.Header name="Cache-Control" value="public, max-age=31557600" />
+        <Res.Render component={HomePage} />
+      </Get>
       <Get path="/components" render={ComponentsPage} />
       <Router path="/api">
         <Post
@@ -42,4 +50,4 @@ const Updates = () => (
   </>
 );
 
-ReactXpress.render(<ExpressApp />);
+registerApp(ExpressApp);
