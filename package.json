@@ -1,19 +1,16 @@
 {
   "name": "@reactend/express",
-  "version": "1.0.5",
+  "version": "1.0.8",
   "description": "React-like http-server on Nodejs",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "repository": {
     "url": "git@github.com:gigantz/reactend-express.git"
   },
   "scripts": {
     "start": "./node_modules/.bin/babel-node ./src/app.js",
     "dev": "nodemon ./app/index.js",
-    "build": "npm-run-all rollup-build copy-pkg copy-readme",
-    "rollup-build": "NODE_ENV=production rollup -c rollup.config.js",
-    "copy-pkg": "cp ./package.json ./lib/package.json",
-    "copy-readme": "cp ./README.md ./lib/README.md",
-    "publish": "yarn build && npm publish --access public"
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "Orkhan Jafarov",

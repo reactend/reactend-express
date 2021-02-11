@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 export default {
   input: 'src/index.js',
   output: {
-    file: 'lib/index.js',
+    file: 'dist/index.js',
     format: 'cjs',
   },
   external: ['react', 'react-dom', 'prop-types', 'styled-components'],
