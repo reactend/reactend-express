@@ -1,6 +1,6 @@
 {
   "name": "@reactend/express",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "React-like http-server on Nodejs",
   "main": "lib/index.js",
   "repository": {
@@ -13,7 +13,7 @@
     "rollup-build": "NODE_ENV=production rollup -c rollup.config.js",
     "copy-pkg": "cp ./package.json ./lib/package.json",
     "copy-readme": "cp ./README.md ./lib/README.md",
-    "publish": "yarn build && npm publish"
+    "publish": "yarn build && npm publish --access public"
   },
   "keywords": [],
   "author": "Orkhan Jafarov",
