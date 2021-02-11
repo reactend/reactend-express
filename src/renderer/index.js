@@ -7,7 +7,6 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import logger from 'morgan';
-import { join } from 'path';
 
 import { log } from './helpers';
 import { generateRoute } from './generateRoute';
@@ -72,7 +71,7 @@ const reconciler = ReactReconciler({
     if (type === 'static') {
       return {
         path: props.path,
-        static: express.static(join(__dirname, props.publicPath), props.options),
+        static: express.static(props.publicPath, props.options),
       };
     }
 
