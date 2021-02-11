@@ -1,13 +1,16 @@
 {
-  "name": "react-express-renderer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/app.js",
+  "name": "@reactend/express",
+  "version": "1.0.9",
+  "description": "React-like http-server on Nodejs",
+  "main": "dist/index.js",
+  "repository": {
+    "url": "git@github.com:gigantz/reactend-express.git"
+  },
   "scripts": {
     "start": "./node_modules/.bin/babel-node ./src/app.js",
-    "dev": "nodemon --exec babel-node ./src/app.js",
-    "example1": "nodemon --exec babel-node --config-file ./.babelrc ./examples/basic",
-    "example2": "nodemon --exec babel-node --config-file ./.babelrc ./examples/advanced"
+    "dev": "nodemon ./app/index.js",
+    "build": "NODE_ENV=production rollup -c rollup.config.js",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "Orkhan Jafarov",
@@ -26,19 +29,25 @@
     ]
   },
   "dependencies": {
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "prop-types": "^15.7.2",
+    "morgan": "^1.10.0",
+    "react-reconciler": "^0.26.1",
+    "prop-types": "^15.7.2"
+  },
+  "peerDependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "react-reconciler": "^0.26.1",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
-    "@babel/node": "^7.12.13",
     "@babel/plugin-transform-react-jsx": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
+    "@rollup/plugin-babel": "^5.2.3",
+    "@rollup/plugin-commonjs": "^17.1.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.2.0",
@@ -50,6 +59,8 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
-    "prettier": "^2.2.1"
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.2.1",
+    "rollup": "^2.38.5"
   }
 }

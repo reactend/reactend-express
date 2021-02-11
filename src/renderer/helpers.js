@@ -31,16 +31,18 @@ export const colors = {
   },
 };
 
+const libName = '⚡️react-end';
+
 export function log(type, msg) {
   switch (type) {
     case 'success':
-      console.log(`${colors.fg.green}${colors.bright}[ReactXpress] ${msg}${colors.reset}`);
+      console.log(`${colors.fg.blue}${colors.bright}[${libName}] ${msg}${colors.reset}`);
       break;
     case 'warn':
-      console.log(`${colors.fg.yellow}[ReactXpress] ${msg}${colors.reset}`);
+      console.log(`${colors.fg.yellow}[${libName}] ${msg}${colors.reset}`);
       break;
     default:
-      console.log(`[ReactXpress] ${msg}`);
+      console.log(`[${libName}] ${msg}`);
       break;
   }
 }
