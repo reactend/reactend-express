@@ -14,6 +14,7 @@ const BaseRoute = (method) => {
   );
 
   RouteComponent.propTypes = {
+    children: PropTypes.node,
     path: PropTypes.string,
     handler: PropTypes.func,
     render: PropTypes.func,

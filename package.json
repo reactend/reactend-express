@@ -4,12 +4,13 @@
   "description": "React-like http-server on Nodejs",
   "main": "lib/index.js",
   "repository": {
-    "url": "git@github.com:gigantz/react-xpress.git"
+    "url": "git@github.com:gigantz/reactend-express.git"
   },
   "scripts": {
     "start": "./node_modules/.bin/babel-node ./src/app.js",
     "dev": "nodemon ./app/index.js",
-    "build": "rollup -c rollup.config.js && npm run copy-pkg && npm run copy-readme",
+    "build": "npm-run-all rollup-build copy-pkg copy-readme",
+    "rollup-build": "NODE_ENV=production rollup -c rollup.config.js",
     "copy-pkg": "cp ./package.json ./lib/package.json",
     "copy-readme": "cp ./README.md ./lib/README.md",
     "publish": "yarn build && npm publish"
@@ -33,7 +34,6 @@
   "dependencies": {
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "prop-types": "^15.7.2",
@@ -47,7 +47,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.13",
-    "@babel/node": "^7.12.13",
     "@babel/plugin-transform-react-jsx": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "@rollup/plugin-babel": "^5.2.3",
@@ -63,6 +62,7 @@
     "husky": "^4.3.8",
     "lint-staged": "^10.5.4",
     "nodemon": "^2.0.7",
+    "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1",
     "rollup": "^2.38.5"
   }
