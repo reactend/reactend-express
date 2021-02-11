@@ -1,6 +1,6 @@
 {
   "name": "@reactend/express",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "React-like http-server on Nodejs",
   "main": "lib/index.js",
   "repository": {
