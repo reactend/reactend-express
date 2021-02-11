@@ -3,15 +3,8 @@
 React-like http-server on Nodejs
 <br />
 
-![Planet Express](logo.svg)
-
-## Install
-
-`npm i --save @reactend/express react react-dom`</br>
-or</br>
-`yarn add @reactend/express react react-dom`</br>
-
-</br>
+![Planet Express](./logo.svg)
+<br/>
 
 ## Why?
 
@@ -23,7 +16,24 @@ It's the only crazy idea to use React to structure Backend on Node.js.
 It works with express.js framework to run Node.js server. Custom renderer we have is building express structure app from React Components.
 <br /><br />
 
-### Code Example
+## Install
+
+### Install the package
+
+`npm i --save @reactend/express`</br>
+or</br>
+`yarn add @reactend/express`</br>
+<br/>
+
+### Install peer dependecies
+
+`npm i --save react react-dom react-helmet styled-components`</br>
+or</br>
+`yarn add react react-dom react-helmet styled-components`</br>
+
+</br>
+
+## Code Example
 
 ```js
 import React from 'react';
@@ -82,7 +92,7 @@ import cors from 'cors';
 </Get>
 ```
 
-<br/><br/>
+<br/>
 
 ## Components
 
