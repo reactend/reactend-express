@@ -29,7 +29,7 @@ const BaseRoute = (method) => {
 export const Get = BaseRoute('get');
 export const Post = BaseRoute('post');
 export const Put = BaseRoute('put');
-export const Head = BaseRoute('head');
+export const HeadRoute = BaseRoute('head');
 export const Delete = BaseRoute('delete');
 export const Options = BaseRoute('options');
 export const Trace = BaseRoute('trace');

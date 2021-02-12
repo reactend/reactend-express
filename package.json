@@ -7,7 +7,6 @@
     "url": "git@github.com:gigantz/reactend-express.git"
   },
   "scripts": {
-    "start": "./node_modules/.bin/babel-node ./src/app.js",
     "dev": "nodemon ./app/index.js",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
     "prepublishOnly": "npm run build"
