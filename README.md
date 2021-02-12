@@ -11,14 +11,18 @@ React-like http-server on Nodejs<br/>
 ![Planet Express](./logo.svg)
 <br/>
 
-## Why?
+## What's that?
+- Node.js http-server based on React-Components
+- Express.js inside
+- Get, Post, Delete and etc. components to use router method
+- `Get(render)` and `Res.Render` to render your regular React DOM Components
+- useContext(ReqResContext) hook to access `req, res`
+- Support `styled-components`
+- Built-in logger (morgan)
+- Middleware component in Router and its Routes
+- `handler` prop in Route components to use as regular controller
 
-It's the only crazy idea to use React to structure Backend on Node.js.
-<br /><br />
-
-## How it works?
-
-It works with express.js framework to run Node.js server. Custom renderer we have is building express structure app from React Components.
+_and many many features that should be documented..._
 <br /><br />
 
 ## Get started
