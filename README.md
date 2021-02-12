@@ -1,6 +1,8 @@
 # Reactend / Express
 
-React-like http-server on Nodejs
+React-like http-server on Nodejs<br/>
+### 🕹 [Playground on repl.it](https://repl.it/@orkhanjafarov/reactend-playground?v=1)
+### 📄 [Reactend Template](https://github.com/gigantz/reactend-template)
 <br />
 
 ![Planet Express](./logo.svg)
