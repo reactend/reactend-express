@@ -31,12 +31,12 @@ export const colors = {
   },
 };
 
-const libName = '⚡️react-end';
+const libName = '⚡️ reactend';
 
 export function log(type, msg) {
   switch (type) {
     case 'success':
-      console.log(`${colors.fg.blue}${colors.bright}[${libName}] ${msg}${colors.reset}`);
+      console.log(`${colors.fg.green}${colors.bright}[${libName}] ${msg}${colors.reset}`);
       break;
     case 'warn':
       console.log(`${colors.fg.yellow}[${libName}] ${msg}${colors.reset}`);
