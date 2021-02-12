@@ -1,10 +1,10 @@
 {
   "name": "@reactend/express",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "React-like http-server on Nodejs",
   "main": "dist/index.js",
   "repository": {
-    "url": "git@github.com:gigantz/reactend-express.git"
+    "url": "git@github.com:reactend/reactend-express.git"
   },
   "scripts": {
     "dev": "nodemon ./app/index.js",
