@@ -1,8 +1,11 @@
 # Reactend / Express
 
 React-like http-server on Nodejs<br/>
+
 ### 🕹 [Playground on repl.it](https://repl.it/@orkhanjafarov/reactend-playground?v=1)
+
 ### 📄 [Reactend Template](https://github.com/gigantz/reactend-template)
+
 <br />
 
 ![Planet Express](./logo.svg)
@@ -18,22 +21,15 @@ It's the only crazy idea to use React to structure Backend on Node.js.
 It works with express.js framework to run Node.js server. Custom renderer we have is building express structure app from React Components.
 <br /><br />
 
-## Install
+## Get started
 
-### Install the package
+Run this to create reactend project on your local machine
 
-`npm i --save @reactend/express`</br>
-or</br>
-`yarn add @reactend/express`</br>
-<br/>
+```
+npx create-reactend my-app
+```
 
-### Install peer dependecies
-
-`npm i --save react react-dom react-helmet styled-components`</br>
-or</br>
-`yarn add react react-dom react-helmet styled-components`</br>
-
-</br>
+<br />
 
 ## Code Example
 
@@ -114,6 +110,10 @@ _This minor description for now (Docs is on the way)_<br/><br/>
 <br />
 <br />
 
+---
+
 ## Contact me
 
 Email me if you have any idea and you would like to be contributor [orkhanjafarovr@gmail.com](mailto:orkhanjafarovr@gmail.com)
+
+Cheers ✨
