@@ -1,4 +1,5 @@
 export * from './App';
+export * from './Head';
 export * from './Static';
 export * from './Router';
 export * from './Routes';
