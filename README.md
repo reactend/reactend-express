@@ -41,7 +41,7 @@ import { registerApp, App, Static, Router, Get, Post, Res, Logger } from '@react
 
 const ExpressApp = () => (
   <App port={process.env.PORT || 8080}>
-    <Static publicPath="/public" />
+    <Static publicPath={resolve(__dirname, '/public')} />
     <Logger mode="dev" />
     <Router path="/">
       <Get>
@@ -60,6 +60,8 @@ const ExpressApp = () => (
     </Router>
   </App>
 );
+
+registerApp(ExpressApp);
 ```
 
 <br />
