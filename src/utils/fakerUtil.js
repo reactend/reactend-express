@@ -1,5 +1,4 @@
 import faker from 'faker';
-
 import { get } from './common';
 
 /**
@@ -11,12 +10,19 @@ export function transformFakerMap(objMap, locale = 'en') {
   faker.setLocale(locale);
 
   function assign(obj) {
-    if (Array.isArray(obj)) obj.forEach((o) => assign(o));
-    else {
+    if (Array.isArray(obj) && obj.every((n) => typeof n !== 'string'))
+      obj.forEach((o) => assign(o));
+    else if (Array.isArray(obj) && obj.every((n) => typeof n === 'string')) {
+      for (let i = 0; i < obj.length; i++) {
+        obj[i] = get(faker, obj[i], () => 'not found')();
+      }
+    } else {
       for (const prop in obj) {
-        if (typeof obj[prop] === 'string') {
+        if (typeof obj[prop] === 'string' && Number.isNaN(+prop)) {
           obj[prop] = get(faker, obj[prop], () => 'not found')();
-        } else if (Array.isArray(obj[prop])) {
+        } else if (typeof obj[prop] === 'string' && !Number.isNaN(+prop)) {
+          obj[+prop] = get(faker, obj[+prop], () => 'not found')();
+        } else if (Array.isArray(obj[prop]) && obj[prop].every((n) => typeof n !== 'string')) {
           obj[prop].forEach((o) => assign(o));
         } else if (prop in obj) {
           assign(obj[prop]);
