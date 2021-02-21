@@ -1,3 +1,4 @@
+import { replaceValues } from '../utils/propsUtil';
 import { renderPage } from './renderPage';
 
 function paramfn(sq, req, res, next, options) {
@@ -11,7 +12,7 @@ function paramfn(sq, req, res, next, options) {
         res.send(param.content);
         break;
       case 'text':
-        res.send(param.content);
+        res.send(replaceValues(req, param.content));
         break;
       case 'status':
         res.statusCode = param.content;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Static = ({ publicPath, path, options }) => (
-  <static publicPath={publicPath} path={path} options={options} />
+  <static$ publicPath={publicPath} path={path} options={options} />
 );
 
 Static.propTypes = {

@@ -4,13 +4,13 @@ import { Res } from './Res';
 
 const BaseRoute = (method) => {
   const RouteComponent = ({ children, path, handler, render, status, json, text }) => (
-    <route method={method} path={path} handler={handler}>
+    <route$ method={method} path={path} handler={handler}>
       {children}
       {render && <Res.Render component={render} />}
       {status && <Res.Status statusCode={status} />}
       {text && <Res.Content text={text} />}
       {json && <Res.Content json={json} />}
-    </route>
+    </route$>
   );
 
   RouteComponent.propTypes = {
