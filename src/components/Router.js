@@ -2,9 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export const Router = ({ path, caseSensitive, mergeParams, strict, children }) => (
-  <router path={path} caseSensitive={!!caseSensitive} mergeParams={!!mergeParams} strict={!!strict}>
+  <router$
+    path={path}
+    caseSensitive={!!caseSensitive}
+    mergeParams={!!mergeParams}
+    strict={!!strict}
+  >
     {children}
-  </router>
+  </router$>
 );
 
 Router.propTypes = {

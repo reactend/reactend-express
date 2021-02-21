@@ -11,6 +11,7 @@ import logger from 'morgan';
 import { log } from './helpers';
 import { generateRoute } from './generateRoute';
 import { renderHTML } from './renderHTML';
+import { CTYPES } from '../components/constants';
 
 let options = {
   appHOC: (Component) => <Component />,
@@ -24,7 +25,7 @@ const reconciler = ReactReconciler({
   prepareForCommit(containerInfo) {},
   resetAfterCommit(containerInfo) {},
   createInstance(type, props, rootContainerInstance, hostContext, internalInstanceHandle) {
-    if (type === 'app') {
+    if (type === CTYPES.app) {
       const app = express();
       app.use(compression());
       app.use(express.json());
@@ -36,7 +37,7 @@ const reconciler = ReactReconciler({
       return app;
     }
 
-    if (type === 'router') {
+    if (type === CTYPES.router) {
       const router = express.Router({
         caseSensitive: !!props.caseSensitive,
         mergeParams: !!props.mergeParams,
@@ -46,29 +47,31 @@ const reconciler = ReactReconciler({
       return { routerInstance: router, path: props.path };
     }
 
-    if (type === 'route') {
+    if (type === CTYPES.route) {
       const paramsSeq = [];
+      const middlewares = [];
+
       return {
         type,
-        props: { ...props, paramsSeq },
+        props: { ...props, paramsSeq, middlewares },
       };
     }
 
-    if (type === 'middleware') {
-      return {
-        type,
-        props,
-      };
-    }
-
-    if (type === 'param') {
+    if (type === CTYPES.middleware) {
       return {
         type,
         props,
       };
     }
 
-    if (type === 'static') {
+    if (type === CTYPES.param) {
+      return {
+        type,
+        props,
+      };
+    }
+
+    if (type === CTYPES.static) {
       return {
         path: props.path,
         static: express.static(props.publicPath, props.options),
@@ -76,7 +79,7 @@ const reconciler = ReactReconciler({
     }
 
     // eslint-disable-next-line react/destructuring-assignment
-    if (type === 'logger') {
+    if (type === CTYPES.logger) {
       return {
         type,
         props,
@@ -96,18 +99,20 @@ const reconciler = ReactReconciler({
       return;
     }
 
-    if (child.type === 'route') {
+    if (child.type === CTYPES.route) {
       generateRoute(parentInstance.routerInstance, child.props, options);
       return;
     }
 
-    if (child.type === 'middleware') {
+    if (child.type === CTYPES.middleware) {
       if (parentInstance.routerInstance) parentInstance.routerInstance.use(child.props.handler);
-      if (parentInstance) parentInstance.use(child.props.handler);
+      if (parentInstance) {
+        parentInstance.props.middlewares.push(child.props.handler);
+      }
       return;
     }
 
-    if (child.type === 'param') {
+    if (child.type === CTYPES.param) {
       parentInstance.props.paramsSeq.push(child.props);
     }
 
@@ -116,7 +121,7 @@ const reconciler = ReactReconciler({
       return;
     }
 
-    if (child.type === 'logger') {
+    if (child.type === CTYPES.logger) {
       if (!child.props.disabled) {
         parentInstance.use(logger(child.props.mode));
       }
@@ -146,7 +151,7 @@ const reconciler = ReactReconciler({
   commitTextUpdate(textInstance, oldText, newText) {},
   appendChild(parentInstance, child) {},
   appendChildToContainer(container, child) {
-    if (child.type === 'app') {
+    if (child.type === CTYPES.app) {
       container = child;
     }
   },
