@@ -1,5 +1,8 @@
+import React from 'react';
 import { replaceValues } from '../utils/propsUtil';
 import { renderPage } from './renderPage';
+import { log } from './helpers';
+import { Error } from '../components/Error';
 
 function paramfn(sq, req, res, next, options) {
   // eslint-disable-next-line no-restricted-syntax
@@ -47,12 +50,30 @@ export function generateRoute(router, props, options = {}) {
     ...[
       ...(props.middlewares || []),
       async (req, res, next) => {
-        if (props.paramsSeq) {
+        if (props.handler)
+          try {
+            await props.handler(req, res, next, (Component) =>
+              renderPage(Component, { req, res }, options)
+            );
+          } catch (error) {
+            const msg = `Error in the handler passed to this route <${props.method[0].toUpperCase()}${props.method.slice(
+              1
+            )} path="${props.path || '/'}">`;
+
+            log('error', msg);
+
+            res.writableEnded = true;
+            res.statusCode = 500;
+            if (props.method === 'get') {
+              res.end(renderPage(() => <Error msg={msg} error={error} />, { req, res }, options));
+            } else {
+              res.end(msg);
+            }
+          }
+
+        if (props.paramsSeq && !res.writableEnded) {
           paramfn(props.paramsSeq, req, res, next, options);
         }
-
-        if (props.handler)
-          await props.handler(req, res, next, (Component) => renderPage(Component, { req, res }));
       },
     ]
   );
