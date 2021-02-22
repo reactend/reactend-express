@@ -12,6 +12,7 @@ React-like http-server on Nodejs<br/>
 <br/>
 
 ## What's that?
+
 - Node.js http-server based on React-Components
 - Express.js inside
 - Get, Post, Delete and etc. components to use router method
@@ -31,6 +32,14 @@ Run this to create reactend project on your local machine
 
 ```
 npx create-reactend my-app
+```
+
+<br />
+
+You choose template (default: basic)
+
+```
+npx create-reactend my-app --template faker
 ```
 
 <br />
@@ -94,6 +103,18 @@ import cors from 'cors';
 <Get path="/render">
   <Res.Render component={() => <h1>Shut Up And Take My Money!</h1>} />
 </Get>
+
+<Get path="/faker">
+  <Res.Faker
+    length={10}
+    locale="az"
+    map={{
+      fullName: "name.findName",
+      avatar: "image.people",
+      registeredAt: "date.past",
+    }}
+  />
+</Get>
 ```
 
 <br/>
@@ -113,6 +134,7 @@ _This minor description for now (Docs is on the way)_<br/><br/>
 `<Res.Status />` - Response Status (props: statusCode) <br />
 `<Res.SendFile />` - Response Send File (props: path, options, <br />onError) <br />
 `<Res.Redirect />` - Redirect (props: path, statusCode) <br />
+`<Res.Faker />` - Redirect (props: length, locale, map) <br />
 <br />
 <br />
 
