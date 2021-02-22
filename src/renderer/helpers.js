@@ -41,6 +41,9 @@ export function log(type, msg) {
     case 'warn':
       console.log(`${colors.fg.yellow}[${libName}] ${msg}${colors.reset}`);
       break;
+    case 'error':
+      console.log(`${colors.fg.red}[${libName}] ${msg}${colors.reset}`);
+      break;
     default:
       console.log(`[${libName}] ${msg}`);
       break;
