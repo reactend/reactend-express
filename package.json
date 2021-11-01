@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "nodemon ./app/index.js",
     "build": "NODE_ENV=production rollup -c rollup.config.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "validate": "eslint '*.js' && prettier '*.js' --write"
   },
   "keywords": [
     "reactend",
