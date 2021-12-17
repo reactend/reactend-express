@@ -16,3 +16,13 @@ export function set(object, keys, val) {
   }
   object[keys[0]] = val;
 }
+
+export function deleteUndefineds(obj) {
+  for (const prop in obj) {
+    if (obj[prop] === undefined) {
+      delete obj[prop];
+    }
+  }
+
+  return obj;
+}

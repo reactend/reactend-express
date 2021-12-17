@@ -12,11 +12,14 @@ import { log } from './helpers';
 import { generateRoute } from './generateRoute';
 import { renderHTML } from './renderHTML';
 import { CTYPES } from '../components/constants';
+import { typeormCreateInstance, typeormAppendInitialChild } from '../typeorm/typeormHook';
 
 let options = {
   appHOC: (Component) => <Component />,
   renderHTML,
 };
+
+let app;
 
 const reconciler = ReactReconciler({
   getRootHostContext(rootContainerInstance) {},
@@ -26,7 +29,7 @@ const reconciler = ReactReconciler({
   resetAfterCommit(containerInfo) {},
   createInstance(type, props, rootContainerInstance, hostContext, internalInstanceHandle) {
     if (type === CTYPES.app) {
-      const app = express();
+      app = express();
       app.use(compression());
       app.use(express.json());
       app.use(express.urlencoded({ extended: true }));
@@ -86,6 +89,9 @@ const reconciler = ReactReconciler({
       };
     }
 
+    const typeormComponent = typeormCreateInstance(type, props, rootContainerInstance);
+    if (typeormComponent) return typeormComponent;
+
     return null;
   },
 
@@ -100,7 +106,7 @@ const reconciler = ReactReconciler({
     }
 
     if (child.type === CTYPES.route) {
-      generateRoute(parentInstance.routerInstance, child.props, options);
+      generateRoute(parentInstance.routerInstance, child.props, options, parentInstance);
       return;
     }
 
@@ -127,6 +133,11 @@ const reconciler = ReactReconciler({
       }
       return;
     }
+
+    if (Object.values(CTYPES.typeorm).includes(child.type)) {
+      typeormAppendInitialChild(parentInstance, child);
+      return;
+    }
   },
 
   finalizeInitialChildren(instance, type, props, rootContainerInstance, hostContext) {},
@@ -137,12 +148,7 @@ const reconciler = ReactReconciler({
     return text;
   },
 
-  now: null,
-
-  isPrimaryRenderer: true,
-  scheduleDeferredCallback: '',
-  cancelDeferredCallback: '',
-
+  now: Date.now(),
   supportsMutation: true,
 
   commitMount(instance, type, newProps, internalInstanceHandle) {},

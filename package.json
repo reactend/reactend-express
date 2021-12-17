@@ -33,13 +33,16 @@
     ]
   },
   "dependencies": {
+    "chalk": "^4.1.2",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "faker": "^5.4.0",
+    "mongodb": "^3.6.4",
     "morgan": "^1.10.0",
     "prop-types": "^15.7.2",
-    "react-reconciler": "^0.26.1"
+    "react-reconciler": "^0.26.1",
+    "typeorm": "^0.2.31"
   },
   "peerDependencies": {
     "react": "^17.0.1",

@@ -5,7 +5,7 @@ const isDev = process.env.NODE_ENV !== 'production';
 const color = '#83CD29';
 const msgStyle = { backgroundColor: '#222', color, padding: 5, borderRadius: 4, fontSize: 15 };
 
-export const Error = ({ title, msg, error }) => (
+export const ErrorMsg = ({ title, msg, error }) => (
   <div
     style={{
       width: '100vw',

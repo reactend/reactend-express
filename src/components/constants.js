@@ -6,4 +6,12 @@ export const CTYPES = {
   param: 'param$',
   logger: 'logger$',
   static: 'static$',
+  // typeorm
+  typeorm: {
+    start: 'typeormStart$',
+    connection: 'typeormConnection$',
+    entity: 'typeormEntity$',
+    column: 'typeormColumn$',
+    entityCreate: 'typeormEntityCreate$',
+  },
 };

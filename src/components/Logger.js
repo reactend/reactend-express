@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+export const ConsoleLog = ({ children, color, bgColor }) => (
+  <param$ type="console.log" content={{ children, color, bgColor }} />
+);
+
 /**
  * @param {{
  *  mode: 'skip' | 'stream' | 'combined' | 'common' | 'dev' | 'short' | 'tiny'
