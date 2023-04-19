@@ -1,10 +1,11 @@
+/* eslint-disable no-return-await */
 import React from 'react';
 import { replaceValues } from '../utils/propsUtil';
 import { renderPage } from './renderPage';
 import { log } from './helpers';
 import { Error } from '../components/Error';
 
-function paramfn(sq, req, res, next, options) {
+async function paramfn(sq, req, res, next, options) {
   // eslint-disable-next-line no-restricted-syntax
   for (const param of sq) {
     switch (param.type) {
@@ -29,7 +30,8 @@ function paramfn(sq, req, res, next, options) {
         // res.end();
         break;
       case 'render':
-        res.send(renderPage(param.content, { req, res }, options));
+        // eslint-disable-next-line no-await-in-loop
+        res.send(await renderPage(param.content, { req, res }, options));
         break;
       case 'send-file':
         res.sendFile(param.content.path, param.content.options, (err) => {
@@ -52,8 +54,11 @@ export function generateRoute(router, props, options = {}) {
       async (req, res, next) => {
         if (props.handler)
           try {
-            await props.handler(req, res, next, (Component) =>
-              renderPage(Component, { req, res }, options)
+            await props.handler(
+              req,
+              res,
+              next,
+              async (Component) => await renderPage(Component, { req, res }, options)
             );
           } catch (error) {
             const msg = `Error in the handler passed to this route <${props.method[0].toUpperCase()}${props.method.slice(
@@ -65,14 +70,16 @@ export function generateRoute(router, props, options = {}) {
             res.writableEnded = true;
             res.statusCode = 500;
             if (props.method === 'get') {
-              res.end(renderPage(() => <Error msg={msg} error={error} />, { req, res }, options));
+              res.end(
+                await renderPage(() => <Error msg={msg} error={error} />, { req, res }, options)
+              );
             } else {
               res.end(msg);
             }
           }
 
         if (props.paramsSeq && !res.writableEnded) {
-          paramfn(props.paramsSeq, req, res, next, options);
+          await paramfn(props.paramsSeq, req, res, next, options);
         }
       },
     ]

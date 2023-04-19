@@ -7,13 +7,17 @@ import { Error } from '../components/Error';
 import { ReqResContext } from '../context';
 import { log } from './helpers';
 
-export function renderPage(Component, ctx, options) {
+export async function renderPage(Component, ctx, options) {
   try {
     const { appHOC, renderHTML } = options;
+    const PrenderedComponent = await Component({ ctx });
+
     const sheet = new ServerStyleSheet();
     const root = renderToString(
       sheet.collectStyles(
-        <ReqResContext.Provider value={ctx}>{appHOC(Component)}</ReqResContext.Provider>
+        <ReqResContext.Provider value={ctx}>
+          {appHOC(() => PrenderedComponent)}
+        </ReqResContext.Provider>
       )
     );
 
@@ -26,7 +30,7 @@ export function renderPage(Component, ctx, options) {
     const msg = `Error while rendering React DOM Component at "${ctx.req.originalUrl}" path`;
     log('error', msg);
 
-    ctx.res.end(renderPage(() => <Error msg={msg} error={error} />, ctx, options));
+    ctx.res.end(await renderPage(() => <Error msg={msg} error={error} />, ctx, options));
     return false;
   }
 }
